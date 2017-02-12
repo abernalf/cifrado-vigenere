@@ -100,17 +100,20 @@ def in_clave_des():
 	mensaje = str(mensaje)
 	mensaje = clean_(mensaje).upper()
 	return mensaje
+p = 's'
+while p == 's':
+	w = input("----¿DESEA [C]IFRAR O [D]ESCIFRAR----:")
+	w = w.upper()
+	if w == 'C':
+		mensaje = in_datos()
+		clave = in_clave()
+		vigenere(mensaje,clave)
+	if w == 'D':
+		clave = in_datos_des()
+		mensaje = in_clave_des()
+		des_vigenere(clave,mensaje)
+	p = input("----¿DESEA CONTINUAR? [s/n]----:")
 
-w = input("----¿DESEA [C]IFRAR O [D]ESCIFRAR O [S]ALIR----:")
-w = w.upper()
-if w == 'C':
-	mensaje = in_datos()
-	clave = in_clave()
-	vigenere(mensaje,clave)
-if w == 'D':
-	clave = in_datos_des()
-	mensaje = in_clave_des()
-	des_vigenere(clave,mensaje)
 
 	##EJECUTAR CON PYTHON 3
 
