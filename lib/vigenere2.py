@@ -1,10 +1,8 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sys
-#reload(sys)
-#sys.setdefaultencoding('utf-8')
 
-abecedario = map(chr, range(65, 91))
+mod =26
+abecedario = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N','O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 abecedario2 = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ','O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
 def mostrar(resultado_v,tam):
@@ -32,7 +30,7 @@ def vigenere(mensaje,clave):
 	num_m = busqueda(mensaje[0]) 
 	num_c = busqueda(clave[0])
 	suma = num_c + num_m
-	n_letra = suma % 26
+	n_letra = suma % mod
 	letra = conv(n_letra)
 	cadena = [letra]
 
@@ -45,7 +43,7 @@ def vigenere(mensaje,clave):
 		if z > tam(clave):
 			z = 0;
 		suma = num_c + num_m
-		n_letra = suma % 26
+		n_letra = suma % mod
 		letra = conv(n_letra)
 		cadena += [letra]
 	mostrar(cadena,tam(cadena)+1)
@@ -55,7 +53,7 @@ def des_vigenere(clave,mensaje):
 	num_c = busqueda(clave[0])
 	resta = num_m - num_c
 	if resta < 0:
-		resta = resta + 26
+		resta = resta + mod
 	letra = conv(resta)
 	cadena = [letra]
 
@@ -67,7 +65,7 @@ def des_vigenere(clave,mensaje):
 			z = 0;
 		resta = num_m - num_c
 		if resta < 0:
-			resta = resta + 26
+			resta = resta + mod
 		letra = conv(resta)
 		cadena += [letra]
 	mostrar(cadena,tam(cadena)+1)
@@ -100,6 +98,7 @@ def in_clave_des():
 	mensaje = str(mensaje)
 	mensaje = clean_(mensaje).upper()
 	return mensaje
+
 p = 's'
 while p == 's':
 	w = input("----¿DESEA [C]IFRAR O [D]ESCIFRAR----:")
@@ -114,13 +113,5 @@ while p == 's':
 		des_vigenere(clave,mensaje)
 	p = input("----¿DESEA CONTINUAR? [s/n]----:")
 
-
 	##EJECUTAR CON PYTHON 3
-
-
-
-
-
-
-
 
